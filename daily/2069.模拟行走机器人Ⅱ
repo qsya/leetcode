@@ -1,0 +1,12 @@
+/*
+ * @Author: hexp 
+ * @Date: 2023-08-08 11:30:44 
+ * @Last Modified by:   hexp 
+ * @Last Modified time: 2023-08-08 11:30:44 
+ */
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ */
