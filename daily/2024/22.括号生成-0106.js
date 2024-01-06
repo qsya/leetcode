@@ -2,7 +2,7 @@
  * @Author: hexp 
  * @Date: 2024-01-06 22:36:35 
  * @Last Modified by: hexp
- * @Last Modified time: 2024-01-06 23:52:14
+ * @Last Modified time: 2024-01-07 00:06:08
  */
 
 /* 
@@ -62,7 +62,23 @@ console.log(generateParenthesis(3))
  * @return {string[]}
  */
 var generateParenthesis = function (n) {
-  // return 3
+  let arr = []
+  let path = []
+  const dfs = (i, balance) => {
+    if (path.length === n) {
+      let s = Array(n * 2).fill(')')
+      for (const j of path) s[j] = '('
+      arr.push(s.join(""))
+      return
+    }
+    for (let close = 0; close <= balance; close++) {
+      path.push(i + close)
+      dfs(i + close + 1, balance - close + 1)
+      path.pop()
+    }
+  }
+  dfs(0, 0)
+  return arr
 }
 
 console.log(generateParenthesis(3))
