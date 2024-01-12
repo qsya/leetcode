@@ -2,7 +2,7 @@
  * @Author: hexp 
  * @Date: 2024-01-11 22:41:23 
  * @Last Modified by: hexp
- * @Last Modified time: 2024-01-12 23:22:05
+ * @Last Modified time: 2024-01-12 23:30:38
  */
 
 /* 
@@ -40,7 +40,7 @@
  * @return {number[]}
  */
 var inventoryManagement = function (stock, cnt) {
-  stock.sort().length = cnt
+  stock.sort((a, b) => a - b).length = cnt
   return stock
 }
 
