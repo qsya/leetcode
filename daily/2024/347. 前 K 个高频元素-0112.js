@@ -2,7 +2,7 @@
  * @Author: hexp 
  * @Date: 2024-01-12 23:26:03 
  * @Last Modified by: hexp
- * @Last Modified time: 2024-01-13 00:06:41
+ * @Last Modified time: 2024-01-13 22:51:35
  */
 
 /* 
@@ -49,4 +49,34 @@ var topKFrequent = function (nums, k) {
   }
   return arr.sort((a, b) => map.get(b) - map.get(a)).slice(0, k)
 }
-console.log(topKFrequent([3, 0, 1, 0], 2))
+console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2))
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+// 桶排序
+// 1.将数据划分到有限的桶里，再对桶排序
+// map存储频次，数组表达桶，频次作为数组下标表达，针对不同频次的数字，聚合
+var topKFrequent = function (nums, k) {
+  const map = new Map()
+  for (let i = 0; i < nums.length; i++) {
+    map.set(nums[i], (map.get(nums[i]) || 0) + 1)
+  }
+  if (map.size <= k) return [...map.keys()]
+  return buckerSort(map, k)
+}
+
+const buckerSort = (map, k) => {
+  const arr = [], res = []
+  map.forEach((value, key) => {
+    if (arr[value]) arr[value].push(key)
+    else arr[value] = [key]
+  })
+  for (let i = arr.length - 1; i > 0 && res.length < k; i--) {
+    if (arr[i]) res.push(...arr[i])
+  }
+  return res
+}
+console.log(topKFrequent([3, 0, 1, 0], 1))
