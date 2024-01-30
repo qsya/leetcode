@@ -2,7 +2,7 @@
  * @Author: hexp 
  * @Date: 2024-01-19 11:25:38 
  * @Last Modified by: hexp
- * @Last Modified time: 2024-01-19 13:13:35
+ * @Last Modified time: 2024-01-30 23:09:01
  */
 
 /* 
@@ -45,7 +45,6 @@
  * @param {number[]} nums
  * @return {number}
  */
-// 从下标开始，1个数，2个数之和，dp[i]=dp[i-1]+dp[i-2]
 var maxSubArray = function (nums) {
   if (nums.length === 1) return nums[0]
   const length = nums.length
